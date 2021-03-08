@@ -28,7 +28,18 @@ fn ask(prompt:&str) -> u8 {
 
 fn main() {
     let rounds = ask("Hoeveel rondes?");
-    let players = ask("Hoeveel spelers?");
+    let players = 
+        {
+            let a = ask("Hoeveel spelers?");
+            if a > 1 {
+                a
+            }
+            else {
+                println!("Voer meer dan 1 speler in");
+                ask("Hoeveel spelers?")
+            }
+        };
+        
     let time = ask("Hoeveel tijd in minuten?");
     println!("Maximum speeltijd: {} minuten.", rounds * players * time);
     pause();
