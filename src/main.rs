@@ -26,6 +26,7 @@ fn ask(prompt:&str) -> u8 {
     }
 }
 
+/// aks for a value with a minimum value
 fn ask_min(prompt:&str, min:u8) -> u8 {
     loop {
         let a = ask(prompt);
