@@ -17,7 +17,13 @@ fn ask(prompt:&str) -> u8 {
     println!("{}", prompt);
     let mut question = String::new();
     io::stdin().read_line(&mut question).expect("leesfout");
-    u8::from_str_radix(clean_str(&question), 10).expect("Geen nummer")
+    match u8::from_str_radix(clean_str(&question), 10) {
+        Ok(answer) => answer,
+        Err(_) => {
+            println!("Voer een getal in");
+            ask(prompt) // re-ask (seems to not leak memory)
+        }
+    }
 }
 
 fn main() {
