@@ -8,12 +8,12 @@ fn pause() {
 }
 
 /// clean the string
-fn clean_str<'a>(s:&'a String) -> &'a str {
+fn clean_str<'a>(s: &'a String) -> &'a str {
     &s[..].trim()
 }
 
 /// ask for a number with prompt and return it
-fn ask(prompt:&str) -> u8 {
+fn ask(prompt: &str) -> u8 {
     println!("{}", prompt);
     let mut question = String::new();
     io::stdin().read_line(&mut question).expect("leesfout");
@@ -27,13 +27,12 @@ fn ask(prompt:&str) -> u8 {
 }
 
 /// aks for a value with a minimum value
-fn ask_min(prompt:&str, min:u8) -> u8 {
+fn ask_min(prompt: &str, min: u8) -> u8 {
     loop {
         let a = ask(prompt);
         if a > min {
             return a;
-        }
-        else {
+        } else {
             println!("Voer een waarde groter dan {} in", min);
             continue;
         }
