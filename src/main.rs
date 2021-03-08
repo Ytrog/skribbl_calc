@@ -26,20 +26,22 @@ fn ask(prompt:&str) -> u8 {
     }
 }
 
+fn ask_min(prompt:&str, min:u8) -> u8 {
+    loop {
+        let a = ask(prompt);
+        if a > min {
+            return a;
+        }
+        else {
+            println!("Voer een waarde groter dan {} in", min);
+            continue;
+        }
+    }
+}
+
 fn main() {
-    let rounds = ask("Hoeveel rondes?");
-    let players = 
-        {
-            let a = ask("Hoeveel spelers?");
-            if a > 1 {
-                a
-            }
-            else {
-                println!("Voer meer dan 1 speler in");
-                ask("Hoeveel spelers?")
-            }
-        };
-        
+    let rounds = ask_min("Hoeveel rondes?", 1);
+    let players = ask_min("Hoeveel spelers?", 1);
     let time = ask("Hoeveel tijd in minuten?");
     println!("Maximum speeltijd: {} minuten.", rounds * players * time);
     pause();
