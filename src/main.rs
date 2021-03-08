@@ -1,15 +1,18 @@
 use std::io;
 use std::io::prelude::*;
 
+/// commandline pause
 fn pause() {
     println!("Druk op een enter om verder te gaan...");
     io::stdin().read(&mut [0]).expect("oeps");
 }
 
+/// clean the string
 fn clean_str<'a>(s:&'a String) -> &'a str {
     &s[..].trim()
 }
 
+/// ask for a number with prompt and return it
 fn ask(prompt:&str) -> u8 {
     println!("{}", prompt);
     let mut question = String::new();
